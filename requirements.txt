@@ -1,0 +1,37 @@
+# ZCAS Group 11 — HMM Market Regime Detection
+# Direct dependencies only. Transitive dependencies are resolved by pip and
+# captured exactly in requirements.lock.txt (see README, Section "Environment").
+#
+# Bounds are lower="the oldest version whose API we rely on",
+#        upper="the next MAJOR version, which may break us".
+# This is intentional: a 14-day sprint should never be interrupted by an
+# upstream major release landing mid-project.
+
+# --- Core numerical stack -------------------------------------------------
+numpy>=1.26,<3.0
+pandas>=2.2,<3.0          # NOTE: deliberately held below 3.0 for this sprint.
+                          # pandas 3.0 changed string dtypes and copy-on-write
+                          # semantics; yfinance's parsing is not yet widely
+                          # proven against it. Revisit after submission.
+scipy>=1.11,<2.0
+
+# --- Machine learning -----------------------------------------------------
+scikit-learn>=1.4,<2.0    # used for metrics + train/test utilities
+hmmlearn>=0.3.3,<0.4      # GaussianHMM: Baum-Welch (fit), Viterbi (predict),
+                          # Forward (score), Forward-Backward (predict_proba)
+
+# --- Data acquisition -----------------------------------------------------
+yfinance>=1.7,<2.0        # ^GSPC daily OHLCV. Unofficial Yahoo scraper —
+                          # the single most breakage-prone dependency here,
+                          # which is exactly why we cache to data/raw/.
+
+# --- Visualisation --------------------------------------------------------
+matplotlib>=3.8,<4.0      # static EDA figures (Phase 2)
+plotly>=5.20,<8.0         # interactive regime chart (Phase 4)
+
+# --- Dashboard ------------------------------------------------------------
+streamlit>=1.40,<2.0      # Phase 4 UI
+joblib>=1.3,<2.0          # model serialisation (Task 4.2)
+
+# --- Testing --------------------------------------------------------------
+pytest>=8.0,<10.0
