@@ -1,0 +1,19 @@
+{
+  "ticker": "^GSPC",
+  "start_date": "2021-09-01",
+  "end_date": "2026-09-01",
+  "rows": 1254,
+  "first_date": "2021-09-01",
+  "last_date": "2026-08-31",
+  "columns": [
+    "Adj Close",
+    "Close",
+    "High",
+    "Low",
+    "Open",
+    "Volume"
+  ],
+  "downloaded_at_utc": "2026-09-07T16:12:01+00:00",
+  "yfinance_version": "1.7.0",
+  "pandas_version": "2.3.3"
+}
